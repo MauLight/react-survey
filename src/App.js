@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useReducer } from 'react';
+import React, { useReducer, useState } from 'react';
 
 const reducer = (state, action) => {
   // eslint-disable-next-line
@@ -118,7 +118,10 @@ const reducer = (state, action) => {
 
 function App() {
 
+  const [isDark, setIsDark] = useState(true);
   const [state, dispatch] = useReducer(reducer, { Q1: "", Q2: "", Q3: "", Q4: "", Q5: "", Q6: "", Q7: "", Q8: "", Q9: "", Q10: "", Q11: "", Q12: "", Q13: "", Q14: "", Q15: "", Q16: "", Q17: "", Q18: "" });
+
+  const theme = isDark ? { 'backgroundColor': '#282c34', 'color': 'white' } : { 'backgroundColor': 'white', 'color': '#282c34' };
 
   const handleQ1 = (e) => {
     dispatch({ type: 'Q1', Q1: e.target.value });
@@ -186,9 +189,12 @@ function App() {
 
 
   return (
-    <div className="App mx-5 px-5">
-      <h1 className='title'>SCREENWRITERS' QUEST Survey</h1>
-      <form onSubmit={handleSubmit}>
+    <div className="App px-5" style={theme}>
+      <div className='d-flex justify-content-between'>
+        <h1 className='title'>SCREENWRITERS' QUEST Survey</h1>
+        <button className="btn rounded-0 toggle-btn" onClick={() => setIsDark(!isDark)} >Theme</button>
+      </div>
+      <form className='mt-5' onSubmit={handleSubmit}>
         <h2>Student specific questions:</h2>
         <div className='my-5'>
           <h4>1.	Hello! Please, introduce yourself (name, last name).</h4>

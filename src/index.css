@@ -71,5 +71,8 @@ h4 {
 
 .title {
   font-family: 'Josefin Sans', sans-serif;
-  margin: 80px 0px;
+}
+
+.App {
+  padding: 50px;
 }
